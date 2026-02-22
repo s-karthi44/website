@@ -1,12 +1,17 @@
 /**
  * BirthdayDrop — API client
- * Uses relative paths so it works both locally (via Vite proxy) and on Vercel.
+ * Uses relative paths: works on Vercel (serverless) and locally (Vite proxy).
+ *
+ * Route map (matches /api/* serverless functions):
+ *   GET  /api/pages/:slug            → api/pages/[slug].js
+ *   GET  /api/wishes/:pageId         → api/wishes/[pageId].js
+ *   GET  /api/sender-wish/:pageId    → api/sender-wish/[pageId].js
+ *   GET  /api/sessions/:pageId       → api/sessions/[pageId].js
+ *   PATCH /api/sessions/:pageId      → api/sessions/[pageId].js
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? '';
-
 async function request(path, options = {}) {
-    const res = await fetch(`${BASE_URL}${path}`, {
+    const res = await fetch(path, {
         headers: { 'Content-Type': 'application/json' },
         ...options,
     });
@@ -28,11 +33,11 @@ export const getPageBySlug = (slug) =>
 
 /** Fetch all friend wishes for a page */
 export const getWishes = (pageId) =>
-    request(`/api/pages/${pageId}/wishes`);
+    request(`/api/wishes/${pageId}`);
 
 /** Fetch the sender's special wish (lazy, on unlock) */
 export const getSenderWish = (pageId) =>
-    request(`/api/pages/${pageId}/sender-wish`);
+    request(`/api/sender-wish/${pageId}`);
 
 // ── Sessions ──────────────────────────────────────────────────
 

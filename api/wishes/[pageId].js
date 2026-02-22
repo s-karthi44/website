@@ -34,7 +34,7 @@ async function connectDB() {
     return cached.conn;
 }
 
-// ── Handler ───────────────────────────────────────────────────
+// ── Handler: GET /api/wishes/:pageId ─────────────────────────
 module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -49,7 +49,7 @@ module.exports = async function handler(req, res) {
             .lean();
         return res.json(wishes);
     } catch (err) {
-        console.error('[GET /api/pages/:pageId/wishes]', err);
+        console.error('[GET /api/wishes/:pageId]', err);
         return res.status(500).json({ error: err.message });
     }
 };

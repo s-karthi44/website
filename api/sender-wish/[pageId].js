@@ -34,7 +34,7 @@ async function connectDB() {
     return cached.conn;
 }
 
-// ── Handler ───────────────────────────────────────────────────
+// ── Handler: GET /api/sender-wish/:pageId ────────────────────
 module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -48,7 +48,7 @@ module.exports = async function handler(req, res) {
         if (!wish) return res.status(404).json({ error: 'Sender wish not found' });
         return res.json(wish);
     } catch (err) {
-        console.error('[GET /api/pages/:pageId/sender-wish]', err);
+        console.error('[GET /api/sender-wish/:pageId]', err);
         return res.status(500).json({ error: err.message });
     }
 };

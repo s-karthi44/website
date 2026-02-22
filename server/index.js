@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import pagesRouter from './routes/pages.js';
+import wishesRouter from './routes/wishes.js';
+import senderWishRouter from './routes/senderWish.js';
 import sessionsRouter from './routes/sessions.js';
 
 dotenv.config();
@@ -21,6 +23,8 @@ app.get('/api/health', (_req, res) => res.json({ ok: true, ts: new Date() }));
 
 // ── Routes ─────────────────────────────────────────────────────
 app.use('/api/pages', pagesRouter);
+app.use('/api/wishes', wishesRouter);
+app.use('/api/sender-wish', senderWishRouter);
 app.use('/api/sessions', sessionsRouter);
 
 // ── 404 handler ────────────────────────────────────────────────

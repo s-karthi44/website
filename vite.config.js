@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
+      // Forward all /api/* requests to Express in local dev
       '/api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
