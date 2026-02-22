@@ -1,0 +1,202 @@
+/* ============================================================
+   BirthdayDrop — Global Design System
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Brand Colors */
+  --navy:  #1F3264;
+  --gold:  #D4A853;
+  --gold-light: #F0CC80;
+  --gold-dark:  #A07830;
+  --coral: #E8745A;
+  --sage:  #5A8F6A;
+  --lilac: #7B62A3;
+  --sky:   #8AB4D4;
+  --cream: #FDF8F0;
+  --white: #FFFFFF;
+
+  /* Tag colors */
+  --tag-heartfelt:     #E8745A;
+  --tag-funny:         #5A8F6A;
+  --tag-inspirational: #7B62A3;
+  --tag-sweet:         #8AB4D4;
+
+  /* Neutral shades */
+  --gray-50:  #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(31,50,100,0.10), 0 1px 2px rgba(31,50,100,0.06);
+  --shadow-md: 0 4px 12px rgba(31,50,100,0.15), 0 2px 4px rgba(31,50,100,0.08);
+  --shadow-lg: 0 10px 30px rgba(31,50,100,0.18), 0 4px 10px rgba(31,50,100,0.10);
+  --shadow-xl: 0 20px 50px rgba(31,50,100,0.22), 0 8px 20px rgba(31,50,100,0.12);
+  --shadow-gold: 0 0 20px rgba(212,168,83,0.50);
+  --shadow-gold-lg: 0 0 40px rgba(212,168,83,0.65);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Fonts */
+  --font-display:   'Playfair Display', Georgia, serif;
+  --font-handwrite: 'Caveat', cursive;
+  --font-body:      'DM Sans', -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 280ms ease;
+  --transition-slow:   500ms ease;
+
+  /* Spacing */
+  --page-gutter: clamp(1rem, 5vw, 4rem);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--navy);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Page Background ─────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 20% 10%,
+      rgba(212,168,83,0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 80%,
+      rgba(31,50,100,0.06) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Typography helpers ─────────────────────────── */
+.font-display   { font-family: var(--font-display); }
+.font-hand      { font-family: var(--font-handwrite); }
+.font-body      { font-family: var(--font-body); }
+
+/* ── Utility classes ────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Tag badges ─────────────────────────────────── */
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.tag-heartfelt     { background: var(--tag-heartfelt); }
+.tag-funny         { background: var(--tag-funny); }
+.tag-inspirational { background: var(--tag-inspirational); }
+.tag-sweet         { background: var(--tag-sweet); }
+
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(212,168,83,0.4);
+  border-radius: var(--radius-full);
+}
+
+/* ── Animations ─────────────────────────────────── */
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(-120vh) scale(1.3) rotate(30deg); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--shadow-gold); }
+  50%       { box-shadow: var(--shadow-gold-lg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-6px) rotate(-2deg); }
+  30%       { transform: translateX(6px)  rotate(2deg); }
+  45%       { transform: translateX(-4px) rotate(-1deg); }
+  60%       { transform: translateX(4px)  rotate(1deg); }
+  75%       { transform: translateX(-2px); }
+}
+
+@keyframes spin-out {
+  to { transform: rotate(360deg) scale(0); opacity: 0; }
+}
+
+@keyframes ribbon-untie {
+  0%   { transform: scaleX(1) scaleY(1); opacity: 1; }
+  50%  { transform: scaleX(1.2) scaleY(0.4); opacity: 0.6; }
+  100% { transform: scaleX(0) scaleY(0); opacity: 0; }
+}
+
+@keyframes gold-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes draw-underline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes bounce-in {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.shake     { animation: shake 0.5s ease; }
+.pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }

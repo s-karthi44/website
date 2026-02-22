@@ -1,0 +1,127 @@
+.task-panel {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(212, 168, 83, 0.30);
+    box-shadow: var(--shadow-lg);
+    min-width: 240px;
+    max-width: 300px;
+    overflow: hidden;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.task-panel.all-done {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+/* Toggle button */
+.task-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: left;
+}
+
+.task-toggle:hover {
+    background: rgba(212, 168, 83, 0.08);
+}
+
+.task-toggle-icon {
+    font-size: 1.1rem;
+}
+
+.task-toggle-label {
+    flex: 1;
+}
+
+.task-toggle-chevron {
+    font-size: 0.65rem;
+    color: var(--gray-400);
+}
+
+/* Task list */
+.task-list {
+    list-style: none;
+    padding: 0 0 0.5rem;
+    border-top: 1px solid rgba(212, 168, 83, 0.15);
+    overflow: hidden;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    transition: background var(--transition-fast);
+}
+
+.task-item:hover {
+    background: rgba(212, 168, 83, 0.06);
+}
+
+.task-item.done {
+    opacity: 0.75;
+}
+
+.task-emoji {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.task-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.task-label {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.3;
+}
+
+.task-item.done .task-label {
+    text-decoration: line-through;
+    color: var(--gray-400);
+}
+
+.task-hint {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: var(--gray-400);
+}
+
+.task-check {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Mobile: bottom drawer-ish */
+@media (max-width: 640px) {
+    .task-panel {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        max-width: 100%;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        min-width: unset;
+    }
+}

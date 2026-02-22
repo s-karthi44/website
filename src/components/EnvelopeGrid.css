@@ -1,0 +1,42 @@
+.envelope-grid-wrapper {
+    padding: 0 var(--page-gutter) 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.envelope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 480px) {
+    .envelope-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Empty states */
+.envelope-grid-empty {
+    text-align: center;
+    padding: 5rem var(--page-gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-400);
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+}
+
+.empty-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.empty-hint {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}

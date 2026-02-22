@@ -1,0 +1,88 @@
+.hero-section {
+    position: relative;
+    min-height: 44vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem var(--page-gutter) 4rem;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* ── Floating emoji field ───────────────────── */
+.emoji-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-emoji {
+    position: absolute;
+    bottom: -2rem;
+    will-change: transform, opacity;
+    animation: float-up linear infinite;
+    user-select: none;
+}
+
+/* ── Hero content ───────────────────────────── */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hero-subtitle-top {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gold-dark);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.05;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-name-underline {
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    border-radius: var(--radius-full);
+    transform-origin: left center;
+    animation: draw-underline 1s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-subtitle {
+    font-family: var(--font-handwrite);
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    color: var(--gray-600);
+    margin-top: 0.5rem;
+}
+
+.hero-sender {
+    color: var(--coral);
+    font-weight: 700;
+}
+
+.hero-hint {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--gray-400);
+    margin-top: 0.25rem;
+}

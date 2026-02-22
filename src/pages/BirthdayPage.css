@@ -1,0 +1,90 @@
+.bd-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Loading */
+.bd-loading {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--gray-600);
+}
+
+.bd-loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(212, 168, 83, 0.25);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error */
+.bd-error {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    color: var(--gray-600);
+    text-align: center;
+    padding: 2rem;
+}
+
+.bd-error-detail {
+    font-size: 0.8rem;
+    color: var(--gray-400);
+}
+
+/* Divider */
+.bd-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem var(--page-gutter);
+    max-width: 600px;
+    margin: 1rem auto;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-align: center;
+}
+
+.bd-divider::before,
+.bd-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Footer */
+.bd-footer {
+    margin-top: auto;
+    padding: 2rem var(--page-gutter);
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--gray-400);
+}
+
+.bd-footer span {
+    color: var(--gold-dark);
+    font-weight: 600;
+}

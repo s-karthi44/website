@@ -1,0 +1,109 @@
+.sender-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(10, 18, 50, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.sender-modal-card {
+    position: relative;
+    width: min(640px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(160deg, #FFF9E8 0%, #FFF3C4 50%, #FDE98A 100%);
+    border: 3px solid var(--gold);
+    box-shadow: var(--shadow-xl), var(--shadow-gold-lg);
+    padding: 3rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.sender-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: 0;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.sender-modal-close:hover {
+    color: var(--navy);
+    transform: rotate(90deg) scale(1.2);
+}
+
+/* Header */
+.sender-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sender-modal-emoji {
+    font-size: 4rem;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(212, 168, 83, 0.5));
+}
+
+.sender-modal-label {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+}
+
+/* Body */
+.sender-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.sender-modal-message {
+    font-family: var(--font-handwrite);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.sender-modal-from {
+    font-family: var(--font-handwrite);
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+    font-weight: 700;
+}
+
+/* Footer placeholder */
+.sender-modal-footer {
+    border-top: 1px dashed rgba(212, 168, 83, 0.5);
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.sender-modal-footer p {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--gray-400);
+    font-style: italic;
+}

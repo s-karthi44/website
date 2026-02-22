@@ -1,0 +1,131 @@
+.envelope-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: #fff;
+    border: 2px solid rgba(var(--accent, 212, 168, 83), 0.25);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    perspective: 800px;
+    transition: border-color var(--transition-normal);
+    user-select: none;
+}
+
+.envelope-card:hover {
+    border-color: rgba(212, 168, 83, 0.55);
+}
+
+.envelope-card.opened {
+    cursor: default;
+    border-color: color-mix(in srgb, var(--accent, #D4A853) 50%, transparent);
+}
+
+/* ── Front face ───────────────────────────── */
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(160deg, #fff 0%, #FDF8F0 100%);
+    backface-visibility: hidden;
+}
+
+/* Envelope flap decoration */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.flap-triangle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 100vw solid transparent;
+    border-right: 100vw solid transparent;
+    border-top: 56px solid var(--accent, #D4A853);
+    opacity: 0.15;
+}
+
+/* Wax seal */
+.wax-seal {
+    font-size: 2.2rem;
+    width: 56px;
+    height: 56px;
+    background: radial-gradient(circle at 40% 35%,
+            color-mix(in srgb, var(--accent, #D4A853) 80%, white) 0%,
+            var(--accent, #D4A853) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.25rem;
+}
+
+.envelope-from {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+}
+
+.envelope-tap-hint {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    margin-top: auto;
+}
+
+/* ── Wish Card (revealed) ─────────────────── */
+.wish-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.5rem;
+    background: linear-gradient(150deg,
+            color-mix(in srgb, var(--accent, #D4A853) 8%, white) 0%,
+            color-mix(in srgb, var(--accent, #D4A853) 4%, white) 100%);
+    overflow-y: auto;
+    text-align: center;
+}
+
+.wish-card-emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.wish-card-message {
+    font-family: var(--font-handwrite);
+    font-size: 1.15rem;
+    color: var(--navy);
+    line-height: 1.55;
+    flex: 1;
+}
+
+.wish-card-from {
+    font-family: var(--font-handwrite);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+    margin-top: auto;
+}

@@ -1,0 +1,84 @@
+.progress-bar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(253, 248, 240, 0.90);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 168, 83, 0.25);
+    padding: 0.75rem var(--page-gutter);
+    transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+.progress-bar-wrapper.all-done {
+    background: rgba(212, 168, 83, 0.12);
+    border-bottom-color: var(--gold);
+}
+
+.progress-bar-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--navy);
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-done .progress-label {
+    color: var(--gold-dark);
+    font-weight: 700;
+}
+
+.progress-track {
+    flex: 0 0 120px;
+    position: relative;
+    height: 8px;
+    background: rgba(31, 50, 100, 0.10);
+    border-radius: var(--radius-full);
+    overflow: visible;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    background-size: 200% 100%;
+    animation: gold-shimmer 2s linear infinite;
+    box-shadow: 0 0 8px rgba(212, 168, 83, 0.5);
+}
+
+.progress-sparkles {
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 2px;
+    pointer-events: none;
+}
+
+.progress-sparkles span {
+    font-size: 0.85rem;
+    animation: float-up 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.progress-count {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gold-dark);
+    min-width: 2.5rem;
+    text-align: right;
+}
