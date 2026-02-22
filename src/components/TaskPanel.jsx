@@ -33,7 +33,8 @@ const TASKS = [
 export default function TaskPanel() {
     const { state } = useAppState();
     const { tasksCompleted } = state;
-    const [collapsed, setCollapsed] = useState(false);
+    // Collapse by default on mobile so it doesn't cover the envelope grid
+    const [collapsed, setCollapsed] = useState(() => window.innerWidth < 640);
 
     const completedCount = Object.values(tasksCompleted).filter(Boolean).length;
     const allDone = completedCount === 4;

@@ -12,7 +12,10 @@
     min-width: 240px;
     max-width: 300px;
     overflow: hidden;
-    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+    transition:
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-radius var(--transition-normal);
 }
 
 .task-panel.all-done {
@@ -35,8 +38,8 @@
     font-weight: 600;
     color: var(--navy);
     text-align: left;
-    /* Always full touch height */
     min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .task-toggle:hover {
@@ -54,6 +57,11 @@
 .task-toggle-chevron {
     font-size: 0.65rem;
     color: var(--gray-400);
+    transition: transform var(--transition-fast);
+}
+
+.task-panel.collapsed .task-toggle-chevron {
+    transform: rotate(180deg);
 }
 
 /* Task list */
@@ -110,7 +118,6 @@
     font-family: var(--font-body);
     font-size: 0.72rem;
     color: var(--gray-400);
-    /* Truncate long hints on small panels */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -121,7 +128,7 @@
     flex-shrink: 0;
 }
 
-/* ── Mobile: full-width bottom drawer ───────── */
+/* ── Mobile: bottom drawer ────────────────────── */
 @media (max-width: 640px) {
     .task-panel {
         bottom: 0;
@@ -130,21 +137,28 @@
         max-width: 100%;
         min-width: unset;
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border-bottom: none;
         /* Safe area for iPhone home bar */
         padding-bottom: env(safe-area-inset-bottom, 0px);
         box-shadow: 0 -4px 24px rgba(31, 50, 100, 0.12), var(--shadow-lg);
+        /* Smooth transition for drawer open/close */
+        transition:
+            border-color var(--transition-normal),
+            box-shadow var(--transition-normal),
+            border-radius var(--transition-normal);
     }
 
+    /* Drag handle indicator */
     .task-toggle {
-        /* Drag handle feel */
+        position: relative;
         justify-content: center;
-        padding: 0.5rem 1rem 0.6rem;
+        padding: 0.9rem 1rem 0.6rem;
     }
 
     .task-toggle::before {
         content: '';
         position: absolute;
-        top: 0.4rem;
+        top: 0.45rem;
         left: 50%;
         transform: translateX(-50%);
         width: 36px;
@@ -153,12 +167,33 @@
         border-radius: var(--radius-full);
     }
 
-    .task-toggle {
-        position: relative;
-        padding-top: 1rem;
+    .task-toggle-label {
+        flex: unset;
     }
 
     .task-item {
-        padding: 0.7rem 1rem;
+        padding: 0.75rem 1.25rem;
+    }
+
+    /* Collapsed on mobile: compact pill */
+    .task-panel.collapsed {
+        border-radius: var(--radius-full);
+        bottom: 1rem;
+        right: 1rem;
+        left: auto;
+        width: auto;
+        min-width: unset;
+        border-bottom: 2px solid rgba(212, 168, 83, 0.30);
+        padding-bottom: 0;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .task-panel.collapsed .task-toggle {
+        padding: 0.6rem 1rem;
+        justify-content: flex-start;
+    }
+
+    .task-panel.collapsed .task-toggle::before {
+        display: none;
     }
 }
