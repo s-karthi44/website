@@ -1,9 +1,9 @@
 /**
  * BirthdayDrop — API client
- * All requests go to the Express + MongoDB backend.
+ * Uses relative paths so it works both locally (via Vite proxy) and on Vercel.
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const BASE_URL = import.meta.env.VITE_API_URL ?? '';
 
 async function request(path, options = {}) {
     const res = await fetch(`${BASE_URL}${path}`, {
